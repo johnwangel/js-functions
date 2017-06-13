@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Converts a number a string.
  * @param {number} n
@@ -94,23 +96,25 @@ function square(x){
  * @param {number} y
  * @return {number} the result
  */
+
 function calculate (string, x, y){
-  var result = 0;
+  var result = window[string](x,y);
   var id = '';
   var eq = '';
-  if (string === 'add') {
+  switch(string) {
+    case 'add':
       id = ' + ';
-      result = add(x, y);
-    } else if (string === 'subtract'){
+      break;
+    case 'subtract':
       id = ' - ';
-      result = subtract(x, y);
-    } else if (string === 'multiply'){
+      break;
+    case 'multiply':
       id = ' * ';
-      result = multiply(x, y);
-    } else if (string === 'divide'){
+      break;
+    case 'divide':
       id = ' / ';
-      result = divide(x, y);
-    }
+      break;
+  }
   eq = x + id + y + ' = '+ result;
   console.log(eq);
   return result;
@@ -225,10 +229,10 @@ function letterGrade (score, total){
  * @return {object} restaurant
  */
 function incrementReviews(restaurant){
-  if (restaurant['reviews']){
-    restaurant['reviews'] = restaurant['reviews'] + 1;
+  if (restaurant.reviews){
+    restaurant.reviews = restaurant.reviews + 1;
   } else {
-    restaurant['reviews'] = 1;
+    restaurant.reviews = 1;
   }
 
   return restaurant;
